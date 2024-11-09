@@ -21,7 +21,7 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-        working-directory: ./portfolio
+        working-directory: ./New-portfolio
 
       - name: Install Angular CLI
         run: npm install -g @angular/cli
@@ -37,8 +37,8 @@ jobs:
 
       - name: Set Chrome to run with --no-sandbox
         run: npx ng test --watch=false --browsers=ChromeHeadless
-        working-directory: ./portfolio
+        working-directory: ./New-portfolio
 
       - name: Build project
         run: npx ng build --prod
-        working-directory: ./portfolio
+        working-directory: ./New-portfolio
