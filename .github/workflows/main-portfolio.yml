@@ -21,13 +21,13 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-        working-directory: ./New-portfolio  # Ensure this points to your project folder
+        working-directory: ./New-portfolio
 
       - name: Install Angular CLI
         run: npm install -g @angular/cli
-        working-directory: ./New-portfolio  # Ensure this points to your project folder
 
-      - name: Install Google Chrome for headless testing
+      # Install Google Chrome for headless testing
+      - name: Install Google Chrome
         run: |
           sudo apt-get update
           sudo apt-get install -y wget
@@ -37,8 +37,8 @@ jobs:
 
       - name: Set Chrome to run with --no-sandbox
         run: npx ng test --watch=false --browsers=ChromeHeadless
-        working-directory: ./New-portfolio  # Ensure this points to your project folder
+        working-directory: ./New-portfolio
 
       - name: Build project
         run: npx ng build --prod
-        working-directory: ./New-portfolio  # Ensure this points to your project folder
+        working-directory: ./New-portfolio
