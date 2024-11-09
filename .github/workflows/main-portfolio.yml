@@ -28,7 +28,7 @@ jobs:
 
       - name: Set Chrome to run with --no-sandbox
         run: export CHROME_BIN=google-chrome-stable && npx ng test --watch=false --browsers=ChromeHeadless
-        working-directory: ./Laptop-FrontEnd
+        working-directory: ./portfolio
 
       - name: Build project
         run: npx ng build --prod
