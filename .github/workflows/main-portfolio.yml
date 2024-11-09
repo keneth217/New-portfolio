@@ -12,10 +12,10 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4.1.0
+        uses: actions/checkout@v4
 
       - name: Set up Node.js
-        uses: actions/setup-node@v4.1.0
+        uses: actions/setup-node@v4
         with:
           node-version: '18'
 
@@ -26,11 +26,19 @@ jobs:
       - name: Install Angular CLI
         run: npm install -g @angular/cli
 
+      # Install Google Chrome for headless testing
+      - name: Install Google Chrome
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y wget
+          wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+          sudo dpkg -i google-chrome-stable_current_amd64.deb
+          sudo apt-get -f install -y
+
       - name: Set Chrome to run with --no-sandbox
-        run: export CHROME_BIN=google-chrome-stable && npx ng test --watch=false --browsers=ChromeHeadless
+        run: npx ng test --watch=false --browsers=ChromeHeadless
         working-directory: ./portfolio
 
       - name: Build project
         run: npx ng build --prod
         working-directory: ./portfolio
-
